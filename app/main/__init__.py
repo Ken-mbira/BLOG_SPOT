@@ -1,7 +1,5 @@
 from flask import Blueprint
 
-main = Blueprint('main',__name__,url_prefix='/main')
+main = Blueprint('main',__name__)
 
-@main.route('/')
-def index():
-    return 'Hello main'
+from . import views
