@@ -1,0 +1,2 @@
+Hi {{ user.username }},
+Welcome to the BLOGPOST family, we are eager to have a glance at your content, also feel free to comment to the rest of the content that is available
