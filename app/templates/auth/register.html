@@ -1,4 +1,9 @@
-{% extends 'base.html'%}{% block content %}
+{% extends 'base.html'%}{% block content %} {% with messages = get_flashed_messages(category_filter = ["success"]) %} {% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %} {% endwith %}
 <div class="registration">
     <form class="container" method="POST">
         {{ form.hidden_tag()}}

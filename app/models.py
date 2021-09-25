@@ -12,8 +12,8 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(50))
-    email = db.Column(db.String(50))
-    password_secure = db.Column(db.String(100))
+    email = db.Column(db.String(50),unique=True,index=True)
+    password_secure = db.Column(db.String(200))
 
     @property
     def password(self):
@@ -28,7 +28,7 @@ class User(db.Model):
         Args:
             password ([string]): [This is the input password]
         """
-        self.pass_secure = generate_password_hash(password)
+        self.password_secure = generate_password_hash(password)
 
     def verify_password(self,password):
         """This will check the set series of hashes and the hashes from the inputted password to see if they match
