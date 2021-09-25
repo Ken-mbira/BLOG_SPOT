@@ -12,4 +12,7 @@ def create_app(config_name):
     from app.auth import auth
     app.register_blueprint(auth)
 
+    from app.main import main
+    app.register_blueprint(main)
+
     return app
