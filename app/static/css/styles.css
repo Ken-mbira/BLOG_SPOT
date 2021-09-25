@@ -1,3 +1,19 @@
 .basics {
     background-color: #E6EED6;
 }
+
+.page1-content {
+    background: url('../images/Blogspot2.jpg');
+    height: 90vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #A72608;
+}
+
+.page1-content .btn {
+    background-color: #E6EED6;
+}
