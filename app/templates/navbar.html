@@ -9,6 +9,9 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('auth.logout')}}">Log Out</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('profile.profile',username = current_user.username)}}">Profile</a>
+                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('auth.login')}}">Login</a>

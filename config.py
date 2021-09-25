@@ -4,6 +4,7 @@ class Config:
     """This are the configurations for the entire app in every environment
     """
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
 
 class DevConfig(Config):
     """This are the configurations for the development environment

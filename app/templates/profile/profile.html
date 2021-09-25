@@ -1,0 +1,44 @@
+{% extends 'base.html' %}{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <img class="img-fluid" src="{{ url_for('static',filename='images/Blogspot 1.png')}}" width="300px">
+        </div>
+        <div class="col-md-5">
+            <div class="mb-3">
+                <p>Name: Ken Mbira</p>
+            </div>
+            <div class="mb-3">
+                <p>Bio: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum vitae ex illo praesentium voluptatibus consequatur quibusdam. Fugiat quos in voluptates sit quam laudantium aliquid modi voluptate, odit ratione, dolor blanditiis.</p>
+            </div>
+            <h2>Contact Information</h2>
+            <div class="mb-3">
+                <p>Email: mbiraken17@gmail.com</p>
+            </div>
+            <div class="mb-3">
+                <p>Mobile Number: 0758926990</p>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <h2><u>Blogs</u></h2>
+            <div class="card">
+                <h5 class="card-header">BLOG HEADING</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Blog meta-title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-secondary">See Blog</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <h2><u>Contributions</u></h2>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+{% endblock %}
