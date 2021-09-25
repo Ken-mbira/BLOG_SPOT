@@ -9,6 +9,9 @@
             {{ form.password.label(class="form-label")}}{{ form.password(class="form-control")}}
         </div>
         {{form.submit(class="btn")}}
+        <div class="mb-3">
+            <p>Don't have an account? Register <a href="{{ url_for('auth.register')}}">here</a></p>
+        </div>
     </form>
     <div class="page-circle-1"></div>
     <div class="page-circle-2"></div>
