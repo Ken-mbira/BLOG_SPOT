@@ -47,3 +47,63 @@
 .submit {
     background-color: #E6EED6;
 }
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.login .container {
+    border: solid 1px black;
+    padding: 20px;
+    width: 50vw;
+    text-align: center;
+}
+
+.login .btn {
+    background-color: #E6EED6;
+}
+
+.page-circle-1 {
+    position: absolute;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    background-color: rgb(114, 49, 35, .6);
+    left: 20vw;
+    top: 60vh;
+    z-index: -1;
+}
+
+.page-circle-2 {
+    position: absolute;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    background-color: rgba(107, 156, 74, 0.6);
+    left: 70vw;
+    top: 20vh;
+    z-index: -1;
+}
+
+.page-circle-3 {
+    position: absolute;
+    overflow: hidden;
+    width: 25vw;
+    height: 25vw;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.page-circle-3::before {
+    content: '';
+    transform: translate(40%, 40%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: rgba(107, 156, 74, 0.6);
+}
