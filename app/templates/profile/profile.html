@@ -3,21 +3,35 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-5">
-            <img class="img-fluid" src="{{ url_for('static',filename='images/Blogspot 1.png')}}" width="300px">
+            {% if user.profile_pic_path %}
+            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail"> {% else %}
+            <form action="{{url_for('profile.update_pic',username=user.username)}}" method="post" enctype="multipart/form-data">
+                <input type="file" name="photo" class="form-control" required>
+                <input type="submit">
+            </form>
+            {% endif %}
         </div>
         <div class="col-md-5">
             <div class="mb-3">
-                <p>Name: Ken Mbira</p>
+                <p>Name: {{ user.username }}</p>
             </div>
             <div class="mb-3">
+                {% if user.bio %}
                 <p>Bio: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum vitae ex illo praesentium voluptatibus consequatur quibusdam. Fugiat quos in voluptates sit quam laudantium aliquid modi voluptate, odit ratione, dolor blanditiis.</p>
+                {% else %}
+                <p>No bio, <a href="#">add bio?</a></p>
+                {% endif %}
             </div>
             <h2>Contact Information</h2>
             <div class="mb-3">
-                <p>Email: mbiraken17@gmail.com</p>
+                <p>Email: {{ user.email }}</p>
             </div>
             <div class="mb-3">
-                <p>Mobile Number: 0758926990</p>
+                {% if user.mobile %}
+                <p>Mobile Number: {{ user.mobile }}</p>
+                {% else %}
+                <p>There is no saved mobile number</p>
+                {% endif %}
             </div>
         </div>
         <div class="col-md-1"></div>
