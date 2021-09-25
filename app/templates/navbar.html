@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light basics">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="{{ url_for('static',filename='images/blogpost logo.png')}}" width="50px"></a>
+        <a class="navbar-brand" href="{{ url_for('main.index')}}"><img src="{{ url_for('static',filename='images/blogpost logo.png')}}" width="50px"></a>
         <div class="navbar-right">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Login</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('auth.login')}}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Get started</a>
+                        <a class="nav-link" href="{{ url_for('auth.register')}}">Get started</a>
                     </li>
                 </ul>
             </div>

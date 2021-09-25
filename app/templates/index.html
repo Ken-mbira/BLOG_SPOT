@@ -2,7 +2,9 @@
 <div class="page1-content">
     <div>
         <h1>Showcase your ideas today...</h1>
-        <button class="btn">Create Blog</button>
+        <a style="text-decoration: none; color: black;" href="{{ url_for('auth.register')}}">
+            <button class="btn">Create Blog</button>
+        </a>
     </div>
 </div>
 {% endblock %}
