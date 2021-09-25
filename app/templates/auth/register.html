@@ -1,2 +1,19 @@
 {% extends 'base.html'%}{% block content %}
-<h1>Hello register</h1>{% endblock %}
+<div class="registration">
+    <form class="container" method="POST">
+        {{ form.hidden_tag()}}
+        <div class="mb-3">
+            {{ form.username.label(class="form-label")}}{{ form.username(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            {{ form.email.label(class="form-label")}}{{ form.email(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            {{ form.password.label(class="form-label")}}{{ form.password(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            {{ form.confirm_password.label(class="form-label")}}{{ form.confirm_password(class="form-control")}}
+        </div>
+        {{ form.submit}}
+    </form>
+</div>{% endblock %}

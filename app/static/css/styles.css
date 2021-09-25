@@ -11,6 +11,7 @@
     background: url('../images/Blogspot2.jpg');
     height: 90vh;
     background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -26,4 +27,23 @@
     background-color: rgba(0, 0, 0, 0.486);
     color: white;
     padding: 5px;
+}
+
+.registration {
+    background: url('../images/Blogspot\ 1.png');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration form .form-control {
+    background-color: #E6EED6;
+}
+
+.submit {
+    background-color: #E6EED6;
 }
