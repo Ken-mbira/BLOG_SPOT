@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block content %}
+<div class="container-fluid">
+    <form class="container" method="POST">
+        {{ form.hidden_tag()}}
+        <div class="mb-3">
+            {{ form.bio.label(class="form.label")}}{{ form.bio(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            {{ form.mobile.label(class="form.label")}}{{ form.mobile(class="form-control")}}
+        </div>
+        {{ form.submit(class="btn btn-success")}}
+    </form>
+</div>
+{% endblock %}

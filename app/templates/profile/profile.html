@@ -17,9 +17,9 @@
             </div>
             <div class="mb-3">
                 {% if user.bio %}
-                <p>Bio: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum vitae ex illo praesentium voluptatibus consequatur quibusdam. Fugiat quos in voluptates sit quam laudantium aliquid modi voluptate, odit ratione, dolor blanditiis.</p>
+                <p>Bio: {{ user.bio }}</p>
                 {% else %}
-                <p>No bio, <a href="#">add bio?</a> {% endif %}
+                <p>No bio, <a href="{{ url_for('profile.update_profile',username = user.username)}}">add bio?</a> {% endif %}
             </div>
             <h2>Contact Information</h2>
             <div class="mb-3">
@@ -29,7 +29,7 @@
                 {% if user.mobile %}
                 <p>Mobile Number: {{ user.mobile }}</p>
                 {% else %}
-                <p>There is no saved mobile number</p>
+                <p>There is no saved mobile number,<a href="{{ url_for('profile.update_profile',username = user.username)}}">add one?</a></p>
                 {% endif %}
             </div>
         </div>
