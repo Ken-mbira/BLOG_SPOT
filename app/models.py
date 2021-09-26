@@ -42,6 +42,7 @@ class Blog(db.Model):
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     category = db.relationship('Category',secondary=category_choice,backref=db.backref('category',lazy = 'dynamic'))
+    comment = db.relationship('Comment', backref='blog', lazy="dynamic")
 
     def __repr__(self):
         return self.title
@@ -62,6 +63,7 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String(200))
     password_secure = db.Column(db.String(200))
     blogs = db.relationship('Blog', backref='author')
+    comment = db.relationship('Comment', backref='author', lazy="dynamic")
 
     @property
     def password(self):
@@ -88,3 +90,16 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+class Comment(db.Model):
+    """This will define all properties of a comment
+
+    Args:
+        db ([type]): [description]
+    """
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer,primary_key=True)
+    comment_body = db.Column(db.String(255))
+    pitch_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    author_id = db.Column(db.Integer,db.ForeignKey('users.id'))

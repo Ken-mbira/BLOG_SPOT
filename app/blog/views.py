@@ -2,7 +2,7 @@ from flask_login.utils import login_required
 from flask_login import current_user
 from flask import redirect,url_for,flash,render_template
 
-from app.models import Blog,Category,category_choice
+from app.models import Blog,Category
 from . import blog
 from .forms import BlogForm
 from app import db
