@@ -4,8 +4,9 @@ from flask import render_template,request,redirect,url_for
 from . import profile
 from app.models import User
 from app import photos,db
+from .forms import UpdateProfileForm
 
-@profile.route('/<username>')
+@profile.route('/<username>',methods=["GET","POST"])
 @login_required
 def profile_index(username):
     """This defines the contents of the profile page
@@ -14,6 +15,7 @@ def profile_index(username):
         username ([type]): [description]
     """
     user = User.query.filter_by(username = username).first()
+
     return render_template('profile/profile.html',user = user)
 
 @profile.route('/<username>/update_pic',methods= ['POST'])

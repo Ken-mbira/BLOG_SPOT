@@ -11,7 +11,7 @@
             </form>
             {% endif %}
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5" method="POST">
             <div class="mb-3">
                 <p>Name: {{ user.username }}</p>
             </div>
@@ -19,8 +19,7 @@
                 {% if user.bio %}
                 <p>Bio: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum vitae ex illo praesentium voluptatibus consequatur quibusdam. Fugiat quos in voluptates sit quam laudantium aliquid modi voluptate, odit ratione, dolor blanditiis.</p>
                 {% else %}
-                <p>No bio, <a href="#">add bio?</a></p>
-                {% endif %}
+                <p>No bio, <a href="#">add bio?</a> {% endif %}
             </div>
             <h2>Contact Information</h2>
             <div class="mb-3">
