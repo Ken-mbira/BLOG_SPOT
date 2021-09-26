@@ -2,9 +2,9 @@ from flask_login.utils import login_required
 from flask_login import current_user
 from flask import redirect,url_for,flash,render_template
 
-from app.models import Blog,Category
+from app.models import Blog,Category,Comment
 from . import blog
-from .forms import BlogForm
+from .forms import BlogForm, CommentForm
 from app import db
 
 @blog.route('/create_blog',methods = ['POST','GET'])
@@ -33,11 +33,20 @@ def show_blogs():
 
     return render_template('blog/blogs.html',blogs = blogs)
 
-@blog.route('/<title>')
+@blog.route('/<title>',methods=['POST','GET'])
 def show_blog(title):
     """This will render a single blog
     """
+    form = CommentForm()
     blog = Blog.query.filter_by(title = title).first()
+    comments = blog.comment
 
-    return render_template('blog/blog.html',blog = blog)
+    if form.validate_on_submit():
+        comment = Comment(comment_body = form.comment.data,author_id = current_user.id,blog_id = blog.id)
+        db.session.add(comment)
+        db.session.commit()
+
+        return redirect(url_for('blog.show_blog',title = title))
+
+    return render_template('blog/blog.html',blog = blog,form = form,comments = comments)
 

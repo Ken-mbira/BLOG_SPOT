@@ -11,6 +11,37 @@
         <div style="position: absolute; top:10px;left: 10px;">
             <span class="badge rounded-pill bg-dark">{{ blog.category[0].category_name }}</span>
         </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Comment</button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form method="POST">
+                            {{ form.hidden_tag()}}
+                            <div class="mb-3">
+                                {{form.comment.label(class="form-label")}}{{ form.comment(class="form-control")}}
+                            </div>
+                            {{ form.submit(class="btn btn-success")}}
+                        </form>
+                        <hr>
+                        <div>
+                            <h3><u>Comments</u></h3>
+                            {% for comment in comments %}
+                            <div class="card" style="margin:10px">
+                                <div class="card-body">
+                                    <p class="card-text">{{ comment.comment_body }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ comment.author.username }}</small></p>
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

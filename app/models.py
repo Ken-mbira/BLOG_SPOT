@@ -101,5 +101,5 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer,primary_key=True)
     comment_body = db.Column(db.String(255))
-    pitch_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
     author_id = db.Column(db.Integer,db.ForeignKey('users.id'))

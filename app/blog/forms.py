@@ -14,3 +14,12 @@ class BlogForm(FlaskForm):
     blog = TextAreaField('Enter the blog itself')
     category = RadioField('Enter the category in which your blog falls',validators=[Required()],choices=[('technology'),('finance'),('religion'),('fashion'),('food'),('music'),('lifestyle'),('sports'),('travel'),('politics'),('movie'),('gaming'),('cars')])
     submit = SubmitField('Create Blog')
+
+class CommentForm(FlaskForm):
+    """This defines the data to be collected from the comment form
+
+    Args:
+        FlaskForm ([type]): [description]
+    """
+    comment = StringField('Enter your comment below',validators=[Required()])
+    submit = SubmitField('Submit')
