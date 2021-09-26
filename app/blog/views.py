@@ -50,3 +50,15 @@ def show_blog(title):
 
     return render_template('blog/blog.html',blog = blog,form = form,comments = comments)
 
+@blog.route('/<id>/<title>')
+@login_required
+def delete_comment(id,title):
+    """This deletes the comment
+    """
+    comment = Comment.query.filter_by(id = id).first()
+    db.session.delete(comment)
+    db.session.commit()
+
+    return redirect(url_for('blog.show_blog',title = title))
+
+

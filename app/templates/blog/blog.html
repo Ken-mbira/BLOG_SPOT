@@ -33,7 +33,8 @@
                                 <div class="card-body">
                                     <p class="card-text">{{ comment.comment_body }}</p>
                                     <p class="card-text"><small class="text-muted">{{ comment.author.username }}</small></p>
-                                    <a href="#" class="btn btn-danger">Delete</a>
+                                    {% if current_user.id == blog.author.id %}
+                                    <a href="{{ url_for('blog.delete_comment',title = blog.title,id = comment.id)}}" class="btn btn-danger">Remove</a> {% endif %}
                                 </div>
                             </div>
                             {% endfor %}
