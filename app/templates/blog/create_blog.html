@@ -1,0 +1,19 @@
+{% extends 'base.html'%}{% block content %}
+<div class="create_blog">
+    <form class="container-fluid" method="POST">
+        {{ form.hidden_tag()}}
+        <div class="mb-3">
+            {{ form.title.label(class="form-label")}}{{form.title(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            {{ form.meta_title.label(class="form-label")}}{{form.meta_title(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            {{ form.blog.label(class="form-label")}}{{form.blog(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            {{ form.category.label(class="form-label")}}{{form.category(class="list-group-flush")}}
+        </div>
+        {{ form.submit(class="btn btn-secondary")}}
+    </form>
+</div>{% endblock %}
