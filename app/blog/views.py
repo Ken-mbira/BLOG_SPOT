@@ -61,4 +61,14 @@ def delete_comment(id,title):
 
     return redirect(url_for('blog.show_blog',title = title))
 
+@blog.route('/blogs/delete/<title>')
+@login_required
+def delete_blog(title):
+    """This deletes a blog
+    """
+    blog = Blog.query.filter_by(title = title).first()
 
+    db.session.delete(blog)
+    db.session.commit()
+
+    return redirect(url_for('blog.show_blogs'))

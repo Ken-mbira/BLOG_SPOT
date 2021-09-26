@@ -7,8 +7,8 @@
             <h6 class="card-subtitle mb-2 text-muted">{{ blog.meta_title }}</h6>
             <p class="card-text">{{ blog.author.username }}</p>
             <p class="card-text">{{ blog.posted.strftime('%Y-%m-%d') }}</p>
-            <a href="{{ url_for('blog.show_blog',title = blog.title)}}" class="card-link">See blog</a>
-            <a href="#" class="card-link">Comment</a>
+            <a href="{{ url_for('blog.show_blog',title = blog.title)}}" class="btn btn-secondary">See blog</a> {% if current_user.id == blog.author.id %}
+            <a href="{{url_for('blog.delete_blog',title = blog.title)}}" class="btn btn-danger">Delete Blog</a> {% endif %}
         </div>
     </div>
     {% endfor %}
