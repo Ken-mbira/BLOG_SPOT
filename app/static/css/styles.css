@@ -23,11 +23,12 @@
     background-color: #E6EED6;
 }
 
-.page1-content div {
+
+/* .inside {
     background-color: rgba(0, 0, 0, 0.486);
     color: white;
     padding: 5px;
-}
+} */
 
 .registration {
     background: url('../images/Blogspot\ 1.png');
