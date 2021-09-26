@@ -36,4 +36,7 @@ def create_app(config_name):
     from app.profile import profile
     app.register_blueprint(profile)
 
+    from app.blog import blog
+    app.register_blueprint(blog)
+
     return app
