@@ -5,6 +5,47 @@ from datetime import datetime
 
 from . import db
 
+
+class Category(db.Model):
+    """This defines all the topics that a blog may be about
+
+    Args:
+        db ([type]): [description]
+
+    Raises:
+        AttributeError: [description]
+
+    Returns:
+        [type]: [description]
+    """
+    __tablename__ = 'category'
+    id = db.Column(db.Integer,primary_key = True)
+    category_name = db.Column(db.String)
+
+category_choice = db.Table('category_choice',
+    db.Column('blog_id',db.Integer,db.ForeignKey('blogs.id')),
+    db.Column('category_id',db.Integer,db.ForeignKey('category.id'))
+)
+
+class Blog(db.Model):
+    """Defines all behaviours of a blog
+
+    Args:
+        db ([type]): [description]
+    """
+    __tablename__ = 'blogs'
+
+    id = db.Column(db.Integer,primary_key=True)
+    title = db.Column(db.String(200))
+    meta_title = db.Column(db.String(200))
+    body = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    category = db.relationship('Category',secondary=category_choice,backref=db.backref('category',lazy = 'dynamic'))
+
+    def __repr__(self):
+        return self.title
+
 class User(UserMixin,db.Model):
     """This defines all behaviours of a user
 
@@ -47,18 +88,3 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
-
-class Blog(db.Model):
-    """Defines all behaviours of a blog
-
-    Args:
-        db ([type]): [description]
-    """
-    __tablename__ = 'blogs'
-
-    id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(200))
-    meta_title = db.Column(db.String(200))
-    body = db.Column(db.String)
-    posted = db.Column(db.DateTime,default=datetime.utcnow)
-    author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
