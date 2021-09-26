@@ -5,6 +5,8 @@ class Config:
     """
     SECRET_KEY = os.environ.get('SECRET_KEY')
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
 class DevConfig(Config):
     """This are the configurations for the development environment

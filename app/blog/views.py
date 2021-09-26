@@ -29,4 +29,6 @@ def create_blog():
 
 @blog.route('/blogs')
 def show_blogs():
-    return render_template('blog/blogs.html')
+    blogs = Blog.query.order_by(Blog.posted).limit(4)
+
+    return render_template('blog/blogs.html',blogs = blogs)

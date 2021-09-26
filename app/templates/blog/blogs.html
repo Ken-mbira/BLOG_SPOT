@@ -1,3 +1,17 @@
 {% extends 'base.html'%}{% block content %}
-<h1>Hello world</h1>
+<div class="container">
+    {% for blog in blogs %}
+    <div class="card" style="margin: 10px;">
+        <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ blog.meta_title }}</h6>
+            <p class="card-text">{{ blog.author.username }}</p>
+            <p class="card-text">{{ blog.posted.strftime('%Y-%m-%d') }}</p>
+            <a href="#" class="card-link">See blog</a>
+            <a href="#" class="card-link">Comment</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
