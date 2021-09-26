@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}
+<div class="container-fluid" style="text-align: left;display: flex;justify-content: center;">
+    <div class="" style="border-left: black solid 2px;border-right: black solid 2px;width: fit-content;height: 100vh; position: relative; padding: 10px;padding-top: 35px;">
+        <div class="mb-3" style="text-align: center;">
+            <h1><u>{{ blog.title}}</u></h1>
+        </div>
+        <p>{{ blog.body|safe }}</p>
+        <div style="position: absolute; top:10px;right: 10px;">
+            <span class="badge rounded-pill bg-dark">{{ blog.posted.strftime('%Y-%m-%d') }}</span>
+        </div>
+        <div style="position: absolute; top:10px;left: 10px;">
+            <span class="badge rounded-pill bg-dark">{{ blog.category[0].category_name }}</span>
+        </div>
+    </div>
+</div>
+{% endblock %}
