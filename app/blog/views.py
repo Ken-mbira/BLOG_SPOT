@@ -6,6 +6,8 @@ from app.models import Blog,Category,Comment
 from . import blog
 from .forms import BlogForm, CommentForm
 from app import db
+from app.models import User
+from app.email import new_blog_message
 
 @blog.route('/create_blog',methods = ['POST','GET'])
 @login_required
@@ -21,6 +23,10 @@ def create_blog():
         category.category.append(blog)
 
         db.session.commit()
+        emails = User.query.add_columns(User.email).all()
+        for email in emails:
+            user = User.query.filter_by(email = email.email).first()
+            new_blog_message("New BLOG","email/new_blog",email.email,user = user,blog = blog)
 
         flash("Blog Created")
         return redirect(url_for('blog.show_blogs'))
