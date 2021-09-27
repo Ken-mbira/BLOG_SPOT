@@ -1,31 +1,40 @@
-import unittest
+from .test_create import TestApplication
 
-from app.models import User
+from app.models import Blog, Category, Comment, Subscriber, User
+from app import db
 
-class TestUser(unittest.TestCase):
-    """This will check all the behaviours of the user class
+class TestUser(TestApplication):
+    """This will check the behaviours of the user class
 
     Args:
-        unittest ([type]): [description]
+        TestApplication ([type]): [description]
     """
     def setUp(self):
-        """This runs before every test does
-        """
-        self.user = User(username = 'Ken Mbira',email = 'mbiraken17@gmail.com',password = "mandizi")
+        TestApplication.setUp(self)
 
-    def test_instance(self):
-        """This will check whether the user class instance is being instantiated correctly
-        """
-        self.assertTrue(isinstance(self.user,User))
+    def tearDown(self) -> None:
+        with self.test_app.app_context():
+            db.session.query(User).delete()
 
-    def test_password_verification(self):
-        """This checks whether the password verification is taking place correctly
-        """
-        password = 'mandizi'
-        self.assertTrue(self.user.verify_password(password),"The password verifyer is not working")
+            db.session.query(Category).delete()
 
-    def test_no_access_password(self):
-        """This will check that the password cannot be accessed
+            db.session.query(Blog).delete()
+
+            db.session.query(Comment).delete()
+
+            db.session.query(Subscriber).delete()
+            db.session.commit()
+
+    def test_save_user(self):
+        """This will check if a user is saved in the database after creation
         """
-        with self.assertRaises(AttributeError):
-            self.user.password
+        with self.test_app.app_context():
+            user = User(username = 'Ken Mbira',email = 'mbiraken17@gmail.com',)
+            db.session.add(user)
+            db.session.commit()
+
+            user_found = User.query.filter_by(username = 'Ken Mbira').first()
+            self.assertEqual(user.username,user_found.username)
+
+
+
