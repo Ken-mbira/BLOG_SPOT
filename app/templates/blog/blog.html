@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% block content %}
 <div class="container-fluid" style="text-align: left;display: flex;justify-content: center;">
-    <div class="" style="border-left: black solid 2px;border-right: black solid 2px;width: fit-content;height: 100vh; position: relative; padding: 10px;padding-top: 35px;">
+    <div class="" style="border-left: black solid 2px;border-right: black solid 2px;width: fit-content;height: 100vh; position: relative; padding: 10px;padding-top: 100px;">
         <div class="mb-3" style="text-align: center;">
             <h1><u>{{ blog.title}}</u></h1>
         </div>
@@ -11,6 +11,11 @@
         <div style="position: absolute; top:10px;left: 10px;">
             <span class="badge rounded-pill bg-dark">{{ blog.category[0].category_name }}</span>
         </div>
+        {% if current_user.id == blog.author.id %}
+        <div style="position: absolute; top:40px;left: 10px;">
+            <a href="{{ url_for('blog.update_blog',title = blog.title)}}" class="btn btn-secondary">Update Blog</a>
+        </div>
+        {% endif %}
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">

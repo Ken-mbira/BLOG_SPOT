@@ -72,3 +72,27 @@ def delete_blog(title):
     db.session.commit()
 
     return redirect(url_for('blog.show_blogs'))
+
+@blog.route('/<title>/update_blog',methods = ['POST','GET'])
+@login_required
+def update_blog(title):
+    """This defines the creation of a new form
+    """
+    blog = Blog.query.filter_by(title = title).first()
+    form = BlogForm()
+
+    if form.validate_on_submit():
+        blog.title = form.title.data
+        blog.meta_title = form.title.data
+        blog.body = form.blog.data
+        blog.author_id = current_user.id
+        db.session.add(blog)
+        category = Category.query.filter_by(category_name = form.category.data).first()
+        category.category.append(blog)
+
+        db.session.commit()
+
+        flash("Blog Updated")
+        return redirect(url_for('blog.show_blogs'))
+
+    return render_template('blog/update_blog.html',form = form)
