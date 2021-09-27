@@ -10,6 +10,9 @@
                     </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('main.category')}}">Add category</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('auth.logout')}}">Log Out</a>
                     </li>
                     <li class="nav-item">

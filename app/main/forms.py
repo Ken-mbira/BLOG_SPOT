@@ -11,3 +11,12 @@ class SubscriptionForm(FlaskForm):
     email = StringField('Enter the email you wish to receive alerts on',validators=[Required()])
     name = StringField('Enter your name:',validators=[Required()])
     submit = SubmitField('Submit')
+
+class CategoryForm(FlaskForm):
+    """This defines the fields needed to create a category
+
+    Args:
+        FlaskForm ([type]): [description]
+    """
+    name = StringField('Enter the name of the category',validators=[Required()])
+    submit = SubmitField('Submit')
