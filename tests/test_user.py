@@ -14,16 +14,7 @@ class TestUser(TestApplication):
 
     def tearDown(self) -> None:
         with self.test_app.app_context():
-            db.session.query(User).delete()
-
-            db.session.query(Category).delete()
-
-            db.session.query(Blog).delete()
-
-            db.session.query(Comment).delete()
-
-            db.session.query(Subscriber).delete()
-            db.session.commit()
+            TestApplication.tearDown(self)
 
     def test_save_user(self):
         """This will check if a user is saved in the database after creation
