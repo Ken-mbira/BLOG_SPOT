@@ -112,3 +112,14 @@ class Quote():
         self.author = author
         self.quote = quote
 
+class Subscriber(db.Model):
+    """This defines the subscribers to the email notifications
+
+    Args:
+        db ([type]): [description]
+    """
+    __tablename__ = 'subs'
+
+    id = db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(255),unique = True,index=True)
+
