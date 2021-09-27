@@ -89,7 +89,7 @@ def update_blog(title):
 
     if form.validate_on_submit():
         blog.title = form.title.data
-        blog.meta_title = form.title.data
+        blog.meta_title = form.meta_title.data
         blog.body = form.blog.data
         blog.author_id = current_user.id
         db.session.add(blog)

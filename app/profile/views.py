@@ -2,7 +2,7 @@ from flask_login.utils import login_required
 from flask import render_template,request,redirect,url_for,abort
 
 from . import profile
-from app.models import User
+from app.models import User,Blog
 from app import photos,db
 from .forms import UpdateProfileForm
 
@@ -15,8 +15,9 @@ def profile_index(username):
         username ([type]): [description]
     """
     user = User.query.filter_by(username = username).first()
+    blogs = Blog.query.filter_by(author_id = user.id).all()
 
-    return render_template('profile/profile.html',user = user)
+    return render_template('profile/profile.html',user = user,blogs = blogs)
 
 @profile.route('/<username>/update_pic',methods= ['POST'])
 @login_required

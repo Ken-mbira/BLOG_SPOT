@@ -38,14 +38,16 @@
     <div class="row">
         <div class="col-md-5">
             <h2><u>Blogs</u></h2>
-            <div class="card">
-                <h5 class="card-header">BLOG HEADING</h5>
+            {% for blog in blogs %}
+            <div class="card" style="margin: 10px;">
+                <h5 class="card-header">{{ blog.title }}</h5>
                 <div class="card-body">
-                    <h5 class="card-title">Blog meta-title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-secondary">See Blog</a>
+                    <h5 class="card-title">{{ blog.meta_title}}</h5>
+                    <p class="card-text">{{ blog.body|truncate(20)|safe }}</p>
+                    <a href="{{ url_for('blog.show_blog',title = blog.title)}}" class="btn btn-secondary">See Blog</a>
                 </div>
             </div>
+            {% endfor %}
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5">
