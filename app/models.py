@@ -103,3 +103,12 @@ class Comment(db.Model):
     comment_body = db.Column(db.String(255))
     blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
     author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
+class Quote():
+    """This defines all the behaviours that come with a quote
+    """
+    def __init__(self,id,author,quote):
+        self.id = id,
+        self.author = author
+        self.quote = quote
+
