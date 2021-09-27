@@ -6,7 +6,7 @@ from app.models import Blog,Category,Comment
 from . import blog
 from .forms import BlogForm, CommentForm
 from app import db
-from app.models import User
+from app.models import User,Subscriber
 from app.email import new_blog_message
 
 @blog.route('/create_blog',methods = ['POST','GET'])
@@ -23,9 +23,9 @@ def create_blog():
         category.category.append(blog)
 
         db.session.commit()
-        emails = User.query.add_columns(User.email).all()
+        emails = Subscriber.query.add_columns(Subscriber.email).all()
         for email in emails:
-            user = User.query.filter_by(email = email.email).first()
+            user = Subscriber.query.filter_by(email = email.email).first()
             new_blog_message("New BLOG","email/new_blog",email.email,user = user,blog = blog)
 
         flash("Blog Created")

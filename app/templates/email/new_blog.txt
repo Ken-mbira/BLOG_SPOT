@@ -1,2 +1,2 @@
-Hi {{ user.username }},
+Hi {{ user.name }},
 This is to inform you about a new blog by {{ blog.author.username }} called {{ blog.title }} 
